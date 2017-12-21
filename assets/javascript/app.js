@@ -19,7 +19,6 @@ $(document).ready(function(){
         for (var i = 0; i < animals.length; i++) {
           // Dynamicaly generate buttons for each animal listed in array
           var z = $("<button>");
-          
           // Adding z class of animal to our button
           z.addClass("animals");
           // Adding z data-attribute
