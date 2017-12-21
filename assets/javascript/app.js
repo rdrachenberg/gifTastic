@@ -34,7 +34,7 @@ $(document).ready(function(){
         //declares v variable to look in the data search area
         var v = $(this).data('search');
         // holds giphy API query variable
-        var queryURL = ("http://api.giphy.com/v1/gifs/search?q=("+ v +")&api_key=gnPcnf9Mt3R3VMryknoAcv9HUzbbpqZT&limit=10");
+        var queryURL = ("https://api.giphy.com/v1/gifs/search?q=("+ v +")&api_key=gnPcnf9Mt3R3VMryknoAcv9HUzbbpqZT&limit=10");
         // Executes the AJAX call
           $.ajax({
           url: queryURL,
