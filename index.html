@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Gif Tastic App</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript" src=assets/javascript/app.js></script>
+</head>
+
+<body>
+	<div class="main-container">
+		<div class="jumbotron jumbotron-fluid">
+  			<div class="container">
+    			<div id="animalButtons"></div>
+    			<div id="animals-view"></div>
+				<form id="animalForm">
+					<label for="input">Search Gifs</label>
+					<input data-search="" type="text" id="animalInput" value=""><br>
+					<input  type="submit" id="animalButton" value="submit">
+				</form>
+  			</div>
+		</div>
+		<div class="subContainer">
+			<div id="gifsLoadHere"></div>
+		</div>
+	</div>
+</body>
+</html>

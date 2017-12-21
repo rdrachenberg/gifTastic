@@ -1,0 +1,31 @@
+.main-container {
+	background-color: ivory;
+	grid-row: auto;
+	padding-top: 2px;
+}
+
+.container {
+	margin-top: 0px;
+}
+
+.jumbotron-fluid {
+	text-align: center;
+	padding-top: 8px;
+}
+
+button {
+	background-color: LightBlue;
+	margin-bottom: 10px;
+}
+img {
+	position: relative;
+}
+
+#animals-view {
+	margin-top: 2px;
+}
+
+.subContainer {
+	display: grid;
+	margin-left: 20px;
+}
