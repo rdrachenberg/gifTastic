@@ -2,10 +2,10 @@ $(document).ready(function(){
 
 // global variables to populated buttons
   var animals = ["Bat", "Cat", "Bear", "Tiger", "Dog", "Monkey", 
-  "Snake", "Cougar", "Fish", "Goat", "Flying Squirel", "Grass Hopper", 
+  "Snake", "Cougar", "Fish", "Goat", "Flying Squirrel", "Grasshopper", 
   "Shark", "Giraffe",];
   
-  var btn = $("<button>");
+  var btn = $("<button>", + addButtons());
 
   var s = $("<input>");
   
@@ -33,7 +33,7 @@ $(document).ready(function(){
         //declares v variable to look in the data search area
         var v = $(this).data('search');
         // holds giphy API query variable
-        var queryURL = ("https://api.giphy.com/v1/gifs/search?q=("+ v +")&api_key=gnPcnf9Mt3R3VMryknoAcv9HUzbbpqZT&limit=10");
+        var queryURL = ("https://api.giphy.com/v1/gifs/search?q=("+ v +")&api_key=gnPcnf9Mt3R3VMryknoAcv9HUzbbpqZT&limit=12");
         // Executes the AJAX call
           $.ajax({
           url: queryURL,
@@ -72,10 +72,10 @@ $(document).ready(function(){
         addButtons();
 
     });
-
       // API Call when button is clicked
     // $(document).on('click' , addButtons); 
       
       addButtons();
-       
+
 }); //end of docuemnt ready function
+

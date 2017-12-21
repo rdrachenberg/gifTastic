@@ -1,3 +1,9 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+}
+
 .main-container {
 	background-color: ivory;
 	grid-row: auto;
