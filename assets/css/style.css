@@ -22,6 +22,8 @@
 button {
 	background-color: LightBlue;
 	margin-bottom: 10px;
+	border-radius: 8px;
+	margin-left: 2px;
 }
 img {
 	position: relative;
@@ -34,4 +36,16 @@ img {
 .subContainer {
 	display: grid;
 	margin-left: 20px;
+}
+
+.submitButton {
+	border-radius: 4px;
+	background-color: LightBlue;
+	max-width: 200px;
+	text-align: center;
+	color: red;
+	float: right;
+	
+
+
 }
