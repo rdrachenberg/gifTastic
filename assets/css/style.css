@@ -2,6 +2,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 10px;
+  max-width: auto;
 }
 
 .main-container {
@@ -26,8 +27,17 @@ button {
 	margin-left: 2px;
 }
 img {
-	position: relative;
+	/*position: relative;
+	clear: both;*/
 }
+
+.gifReturnImage {
+	position: relative;
+	top: 50;
+	left: 10;
+}
+
+
 
 #animals-view {
 	margin-top: 2px;
@@ -36,6 +46,7 @@ img {
 .subContainer {
 	display: grid;
 	margin-left: 20px;
+	background-image: url();
 }
 
 .submitButton {
@@ -44,7 +55,7 @@ img {
 	max-width: 200px;
 	text-align: center;
 	color: red;
-	float: right;
+	float: right;	
 	
 
 
