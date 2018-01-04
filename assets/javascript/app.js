@@ -4,9 +4,10 @@ $(document).ready(function(){
   "Snake", "Cougar", "Fish", "Flying Squirrel", "Grasshopper", 
   "Shark", "Giraffe"];
 
+  // creates a variable called overflow and equals it to an empty array to be filled later
   var overflow = [];
   
-
+  // creates a variable called textInput equal to the overflow array
   var textInput = overflow;
   // creates a variable btn and defines all buttons as that var  
   var btn = $("<button>");
@@ -28,9 +29,10 @@ $(document).ready(function(){
           // Adding the button to the animals-view div
           $("#animals-view").append(z);
         }
+        // executes the giphyCall function
         giphyCall();
-      
       };
+      // executes the addButtons function
       addButtons();
 
     function giphyCall() {
@@ -46,102 +48,63 @@ $(document).ready(function(){
         url: queryURL,
         method: 'GET'
         }).done(function(response) {
+
+          var results = response.data;
           // loop through the length of the AJAX response 
-          for(i = 0; i < response.data.length; i++){
+          for(i = 0; i < results.length; i++){
           //defines secondDiv variable equal to <div> on html    
-          var secondDiv = $('<div>');
+          var secondDiv = $('<div id="myDiv" class="myDiv" >');
           //defines var p as html <p> and puts the AJAX response in text (rating) on html            
-          var p = $('<p>').text("Rating: "+response.data[i].rating);
-                      
-          var gifReturnImage = $('<img src="response.data[i].images.fixed_height.url" data-still="response.data[i].images.fixed_height_still.url" data-animate="response.data[i].images.fixed_height.url" data-state="still" class="gif">');
-
-          var gifReturn = $('<img src="response.data[i].images.fixed_height.url" data-still="response.data[i].images.fixed_height_still.url" data-animate="response.data[i].images.fixed_height.url" data-state="still" class="gif">');
-        
-          gifReturn.attr('src', response.data[i].images.fixed_height.url);
-
-          gifReturnImage.attr('src', response.data[i].images.fixed_height_still.url);
-
-          // gifReturnImage.attr('src',response.data[i].images.fixed_height.url);
-          
+          var p = $('<p>').text("Rating: "+results[i].rating);
+          // creates variable gifReturnImage and assigns image attributes
+          var gifReturnImage = $('<img type="text/javascript" src="results[i].images.fixed_height.url" data-still="results[i].images.fixed_height_still.url" data-animate="results[i].images.fixed_height.url" data-state="still" id="still" class="image">');
+          // attached an attribute to gifReturnImage variable from AJAX call 
+          gifReturnImage.attr('src', results[i].images.fixed_height_still.url);
+          // creates variable gifReturn and assigns image attributes 
+          var gifReturn = $('<img type="text/javascript" src="results[i].images.fixed_height.url" data-still="results[i].images.fixed_height_still.url" data-animate="results[i].images.fixed_height.url" data-state="still" id="animate" class="gif">');
+          // attached an attribute to gifReturn variable from AJAX call        
+          gifReturn.attr('src', results[i].images.fixed_height.url);
+          // prepends our secondDiv with the variable p          
           secondDiv.prepend(p);
-                      
+          // prepends our <div> with a paragraph id and adds rating of gif from AJAX call                      
+          secondDiv.prepend(gifReturn);
+          // prepends our <div> with the still image                       
           secondDiv.prepend(gifReturnImage);
-                  
+          // this is the id target of where we want our gifs to go                 
           $('#gifsLoadHere').prepend(secondDiv);
-          hover();
+          // this handles applying an initializing a class to the gif images of hidden
+          $('.gif').addClass("hidden").removeClass('.gif'); 
+         // Executes hover function
+         hover();
+          
           }
         });
       });
     };
 
-// Handles the hover over gif function to change image
+    // handles the hover over gif function to change image
     function hover() {
-
-      $(".gif").hover(function() {      
+      // monitors the image class as a mouse hover event
+      $(".image").hover(function() {  
+        // selects the current hidden class and then adds class of gif to the previously changed gif class, then removes the hidden class
+        $(" .hidden").addClass('gif').removeClass('hidden').ready();
+        // selects the image class and fades off the image class. Then assigns a class of hidden before removing the image class.   
+        $(".image").fadeOut(10).addClass('hidden').removeClass('image');
       
-      var v = $(this).data('search');
-      
-      // holds giphy API query variable
-      var queryURL = ("https://api.giphy.com/v1/gifs/search?q=("+ v +")&api_key=gnPcnf9Mt3R3VMryknoAcv9HUzbbpqZT&limit=12");
-        
-      // Executes the AJAX call
-        $.ajax({
-        url: queryURL,
-        method: 'GET'
-        }).done(function(response) {
-          
-        for(i = 0; i < response.data.length; i++){
-          
-          var gifReturn = $('<img src="response.data[i].bitly_gif_url" data-still="response.data[i].images.fixed_height_still.url" data-animate="response.data[i].bitly_gif_url" data-state="still" class="gif">'); 
-          
-          console.log(response);
-          console.log(gifReturn);
-
-          var state = $(this).attr("data-state")
-
-          console.log(state);
-
-          var dataStill = [response.data[i].images.fixed_height_still];
-
-          var dataAnimate = [response.data[i].bitly_gif_url];
-
-          dataAnimate = $("animate");
-
-          dataStill = $("still");
-              
-          if (state === "still") {
-                  
-            $(this).attr([dataAnimate], $(this).attr("data-animate"));
-                
-          $(this).attr("data-state", "animate");
-                
-          } else {
-                
-            $(this).attr([dataStill], $(this).attr("data-still"));
-                
-          $(this).attr("data-state", "still");
-                
-          };
-
-          gifReturn.attr('src', response.data[i].images.fixed_height.url);
-
-          $('#gifsLoadHere').attr('src', response.data[i].images.fixed_height.url);     
-        };     
-        });
-      });         
+      });
     };
-
       // Pushes animalInput to Animals array and calls addButtons functions
     $("#animalButton").on("click", function(event) {
-        
+        // prevents the normal default event from occuring
         event.preventDefault();
 
+        // emptys the animals-viewButtons div and replaces it with the newly created input button. This is to prevent it from creating duplicate buttons
         $("#animals-view2Buttons").empty();
-
+        // creates variable animalInput and sets that value equal to the value in the animalInput tag, then trims that value 
         var animalInput = $("#animalInput").val().trim();
-      
+        // pushes the data collected in animalInput and pushes it to our empty overflow array
         overflow.push(animalInput);
-
+        // creates a loop to add button from animalInput var/ animalInput tag
         for (var i = 0; i < overflow.length; i++) {
           // Dynamicaly generate buttons for each string listed in array
           var t = $("<button>" + s);
@@ -156,7 +119,7 @@ $(document).ready(function(){
         }
         giphyCall();
     }); //ends on submit "click" funciton 
-
+  hover();
 
 }); //end of docuemnt ready function
 

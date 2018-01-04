@@ -26,12 +26,17 @@ button {
 	border-radius: 8px;
 	margin-left: 2px;
 }
+img {
+	/*position: relative;
+	clear: both;*/
+}
 
 .gifReturnImage {
 	position: relative;
 	top: 50;
 	left: 10;
 }
+
 
 #animals-view {
 	margin-top: 2px;
@@ -53,24 +58,6 @@ button {
 	
 }
 
-.hidden{
-	position: relative;
-	left: -9999px;
-	top:-999px;
-	visibility: hidden;
-}
-
 .gif {
-	position: relative;
-	display: grid;
- 	grid-template-columns: repeat(3, 1fr);
-  	grid-gap: 10px;
-  	max-width: auto;
-
-}
-
-#myDiv {
-	position: relative;
-	max-height: 210px;
-	max-width: 210px;
+	visibility: show;
 }
